@@ -1,0 +1,85 @@
+{
+  "child": [
+    {
+      "value": "501Deer",
+      "picture": "/servers/501Deer/img.png",
+      "name": "[BFV ROBOT][501Deer]的薯条快乐屋",
+      "description": "诸神黄昏",
+      "season": [
+        "s1","s0-3"
+      ]
+    },
+    {
+      "value": "501Dinner",
+      "picture": "/servers/501Deer/img.png",
+      "name": "[BFV ROBOT][501Dinner]的薯条屋",
+      "description": "诸神黄昏",
+      "season": [
+        "s0-3"
+      ]
+    },
+    {
+      "value": "Miku_M2_old",
+      "picture": "/servers/Miku/miku.jpg",
+      "name": "[BFV ROBOT][Miku]M2喷火器彩蛋测试服",
+      "description": "Miku39 想透透你!",
+      "season": [
+        "s0","s2"
+      ]
+    },
+    {
+      "value": "Miku_M2",
+      "picture": "/servers/Miku/miku.jpg",
+      "name": "[BFV ROBOT][Miku]24H underground",
+      "description": "Miku39 想透透你!",
+      "season": [
+        "s3","s0-3"
+      ]
+    },
+	{
+      "value": "Miku_M2_2",
+      "picture": "/servers/Miku/miku_M2_2.jpg",
+      "name": "[BFV ROBOT][Miku]undergroud #2",
+      "description": "2a盛宴！",
+      "season": [
+        "s0-3"
+      ]
+    },
+	{
+      "value": "Miku_miku39",
+      "picture": "/servers/Miku/miku.jpg",
+      "name": "[BFV ROBOT][Miku]NSFW鸟白岛烧烤店分店",
+      "description": "Miku39 想透透你!",
+      "season": [
+        "s0-3"
+      ]
+    },
+	{
+      "value": "Miku_inf",
+      "picture": "/servers/Miku/miku.jpg",
+      "name": "[[BFV ROBOT][Miku]INF Conquest #3",
+      "description": "Miku39 想透透你!",
+      "season": [
+        "s0-3"
+      ]
+    },
+    {
+      "value": "7651_NoLimit",
+      "picture": "/servers/7651NoLimit/img.png",
+      "name": "[BFV ROBOT][7651]No Limit 50",
+      "description": "硫磺岛主风云之华山论剑",
+      "season": [
+        "s0-2","s0-3"
+      ]
+    },
+    {
+      "value": "待定",
+      "picture": "/servers/standby/standby.png",
+      "name": "待定",
+      "description": "你猜猜看",
+      "season": [
+        "s0-2"
+      ]
+    }
+  ]
+}

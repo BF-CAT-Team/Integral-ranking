@@ -1,0 +1,107 @@
+{
+    "current": "s0-3",
+    "child": {
+        "s0": {
+            "name": "S0\u6d4b\u8bd5\u8d5b\u5b63",
+            "description": "\u6d4b\u8bd5\u8d5b\u5b63",
+            "dateRange": [
+                "2023-08-01",
+                "2023-08-31"
+            ],
+            "serverIds": [
+                "Miku_M2_old"
+            ],
+            "updateTime": "20230901 10:47 (\u6d4b\u8bd5\u8d5b\u5b63\u6700\u7ec8\u6392\u540d)",
+            "fileUrl": [
+                "txt/S0/Miku_M2_20230831_list.txt"
+            ]
+        },
+        "s1": {
+            "name": "S1\u6b63\u5f0f\u8d5b\u5b63",
+            "description": "\u9996\u5c4a\u6b63\u5f0f\u8d5b\u5b63",
+            "dateRange": [
+                "2023-9-01",
+                "2023-9-31"
+            ],
+            "serverIds": [
+                "501Deer"
+            ],
+            "updateTime": "20231001 00:47 (\u8d5b\u5b63\u6700\u7ec8\u6392\u540d)",
+            "fileUrl": [
+                "txt/S1/501_20230930_list.txt"
+            ]
+        },
+        "s2": {
+            "name": "S2\u6b63\u5f0f\u8d5b\u5b63",
+            "description": "\u6b63\u5f0f\u8d5b\u5b63",
+            "dateRange": [
+                "2023-10-01",
+                "2023-10-30"
+            ],
+            "serverIds": [
+                "Miku_M2_old"
+            ],
+            "updateTime": "20231101 03:11 (\u8d5b\u5b63\u6700\u7ec8\u6392\u540d)",
+            "fileUrl": [
+                "txt/S2/Miku_M2_20231031_list.txt"
+            ]
+        },
+        "s3": {
+            "name": "S3\u6b63\u5f0f\u8d5b\u5b63",
+            "description": "\u6b63\u5f0f\u8d5b\u5b63",
+            "dateRange": [
+                "2023-12-01",
+                "2023-12-31"
+            ],
+            "serverIds": [
+                "Miku_M2"
+            ],
+            "updateTime": "20231231 23:05(\u8d5b\u5b63\u6700\u7ec8\u6392\u540d)",
+            "fileUrl": [
+                "txt/S3/Miku_M2_20231231_list.txt"
+            ]
+        },
+        "s0-2": {
+            "name": "S0-2\u6d4b\u8bd5\u8d5b\u5b63",
+            "description": "\u6d4b\u8bd5\u8d5b\u5b63",
+            "dateRange": [
+                "2024-01-01",
+                "2024-01-31"
+            ],
+            "serverIds": [
+                "7651_NoLimit"
+            ],
+            "updateTime": "20240131 23:24",
+            "fileUrl": [
+                "txt/S0-2/7483_NoLimit_20240131_list.txt"
+            ]
+        },
+        "s0-3": {
+            "name": "S0-3\u6d4b\u8bd5\u8d5b\u5b63",
+            "description": "\u6d4b\u8bd5\u8d5b\u5b63",
+            "dateRange": [
+                "2024-02-01",
+                "2024-04-06"
+            ],
+            "serverIds": [
+                "501Deer",
+                "501Dinner",
+                "Miku_M2",
+                "Miku_M2_2",
+                "Miku_miku39",
+                "Miku_inf",
+                "7651_NoLimit"
+            ],
+            "updateTime": "20240406 00:44",
+            "fileUrl": [
+                "txt/S0-3/501Deer_20240403_list.txt",
+                "txt/S0-3/501Deer_20240403_list.txt",
+                "txt/S0-3/Miku_M2_20240405_list.txt",
+                "txt/S0-3/Miku_M2_20240405_list.txt",
+                "txt/S0-3/Miku_miku39_20240405_list.txt",
+                "txt/S0-3/Miku_inf_20240405_list.txt",
+                "txt/S0-3/7651_NoLimit_20240403_list.txt"
+            ]
+        }
+    }
+}

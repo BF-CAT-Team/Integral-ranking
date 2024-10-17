@@ -1,0 +1,24 @@
+{
+  "home": {
+    "title": "Home"
+  },
+  "achievements": {
+    "title": "Achievement",
+    "tabs": {
+      "0": "ROBOT",
+      "1": "Season"
+    }
+  },
+  "seasonDetail": {
+    "title": "Season Detail"
+  },
+  "season": {
+    "title": "\uD83D\uDCC5 Season"
+  },
+  "my": {
+    "title": "Me"
+  },
+  "helps": {
+    "title": "Help"
+  }
+}

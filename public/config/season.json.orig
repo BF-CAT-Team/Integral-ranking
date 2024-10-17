@@ -1,0 +1,75 @@
+{
+    "current": "s3",
+    "child": {
+        "s0": {
+            "name": "S0\u6d4b\u8bd5\u8d5b\u5b63",
+            "description": "\u6d4b\u8bd5\u8d5b\u5b63",
+            "dateRange": [
+                "2023-08-01",
+                "2023-08-31"
+            ],
+            "serverIds": [
+                "Miku"
+            ],
+            "updateTime": "20230901 10:47 (\u6d4b\u8bd5\u8d5b\u5b63\u6700\u7ec8\u6392\u540d)",
+            "fileUrl": "txt/S0/Miku_M2_20230831_list.txt"
+        },
+        "s1": {
+            "name": "S1\u6b63\u5f0f\u8d5b\u5b63",
+            "description": "\u9996\u5c4a\u6b63\u5f0f\u8d5b\u5b63",
+            "dateRange": [
+                "2023-9-01",
+                "2023-9-31"
+            ],
+            "serverIds": [
+                "501Deer"
+            ],
+            "updateTime": "20231001 00:47 (\u8d5b\u5b63\u6700\u7ec8\u6392\u540d)",
+            "fileUrl": "txt/S1/501_20230930_list.txt"
+        },
+        "s2": {
+            "name": "S2\u6b63\u5f0f\u8d5b\u5b63",
+            "description": "\u6b63\u5f0f\u8d5b\u5b63",
+            "dateRange": [
+                "2023-10-01",
+                "2023-10-30"
+            ],
+            "serverIds": [
+                "Miku"
+            ],
+            "updateTime": "20231101 03:11 (\u8d5b\u5b63\u6700\u7ec8\u6392\u540d)",
+            "fileUrl": "txt/S2/Miku_M2_20231031_list.txt"
+        },
+        "s3": {
+            "name": "S3\u6b63\u5f0f\u8d5b\u5b63",
+            "description": "\u6b63\u5f0f\u8d5b\u5b63",
+            "dateRange": [
+                "2023-12-01",
+                "2023-12-31"
+            ],
+            "serverIds": [
+                "Miku underground"
+            ],
+<<<<<<< HEAD
+            "updateTime": "20231225 09:31",
+            "fileUrl": "txt/S3/Miku_M2_20231225_list.txt"
+=======
+            "updateTime": "20231224 22:55",
+            "fileUrl": "txt/S3/Miku_M2_20231224_list.txt"
+        },
+        "s0-2": {
+            "name": "S0-2\u6d4b\u8bd5\u8d5b\u5b63",
+            "description": "\u6d4b\u8bd5\u8d5b\u5b63",
+            "dateRange": [
+                "2024-01-01",
+                "2024-01-31"
+            ],
+            "serverIds": [
+                "待定"
+            ],
+            "updateTime": "",
+            "fileUrl": ""
+>>>>>>> b6858be66e76c7d123dd1066cd4f39e3f3693b47
+        }
+    }
+}

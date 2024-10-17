@@ -1,0 +1,34 @@
+{
+  "header": {
+    "title": "天梯"
+  },
+  "footer": {
+    "about": "关于",
+    "aboutDescription": "BFV战地5积分天梯(娱乐测试中)",
+    "community": "社区",
+    "links": "友情链接",
+    "language": "国际化"
+  },
+  "home": {
+    "title": "首页"
+  },
+  "achievements": {
+    "title": "社区成就",
+    "tabs": {
+      "0": "ROBOT社区成就",
+      "1": "赛季成就"
+    }
+  },
+  "seasonDetail": {
+    "title": "赛季详情"
+  },
+  "season": {
+    "title": "\uD83D\uDCC5赛季历史"
+  },
+  "my": {
+    "title": "关注列表"
+  },
+  "helps": {
+    "title": "帮助"
+  }
+}
