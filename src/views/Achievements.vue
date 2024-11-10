@@ -14,7 +14,7 @@ export default {
       filtrate: {
         numbers: [{name: 'A系列', value: 'A'}, {name: 'B系列', value: 'B'}, {name: 'C系列', value: 'C'}, {name: 'D系列', value: 'D'}],
         numberValue: [],
-        achievementTypes: ['积分天梯', '限时活动限定', '赛事荣誉', '社区贡献荣誉', '特定娱乐赛事荣誉', '通用娱乐赛事荣誉', '游戏普通成就', '游戏稀有成就', '游戏普通成就', '游戏传说成就'],
+        achievementTypes: '积分天梯', '限时活动限定', '赛事荣誉', '社区贡献荣誉', '赛事纪念成就',  '特定娱乐赛事荣誉', '通用娱乐赛事荣誉', '游戏普通成就', '游戏稀有成就', '游戏传说成就', '游戏史诗成就'],
         achievementTypeValue: [],
       },
       tab: 0
@@ -176,7 +176,7 @@ export default {
           <div v-if="showAchievements.length > 0" class="achievement-content">
             <v-card class="achievement-content-card mb-5" variant="elevated" v-for="(i, index) in showAchievements" :key="index">
               <div align="center" class="mt-5">
-                <v-avatar :color="achievementsConfig[i.NumberType].class"
+                <v-avatar :color="achievementsConfig[i.Rarity].class || 'black'"
                           size="large">
                   {{ i.Number }}
                 </v-avatar>
@@ -189,7 +189,7 @@ export default {
                 <p class="mt-5">{{ i.Describe }}</p>
               </v-card-text>
               <v-card-subtitle>
-                <v-chip :color="achievementsConfig[i.NumberType].class">{{ i.Rarity }}</v-chip>
+                <v-chip :color="achievementsConfig[i.Rarity].class || 'black'">{{ i.Rarity }}</v-chip>
               </v-card-subtitle>
               <v-card-text>
                 <b>条件</b>
