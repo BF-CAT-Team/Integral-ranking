@@ -39,7 +39,7 @@ export default new Application({
           },
           {title: '玩家', key: 'player', sortable: false, fixed: true},
           {title: '积分', key: 'score'},
-          {title: '单日浮动', key: 'float'},
+          {title: '24H浮动', key: 'float'},
           {title: 'kpm', key: 'kpm'},
           {title: '赛季时长', key: 'time'},
           {title: '击杀', key: 'kill'},
@@ -70,14 +70,31 @@ export default new Application({
     /**
      * 赛季列表
      */
+    // async getSeasons() {
+    //   const {season} = this.$route.query;
+
+    //   return new Promise((resolve, reject) => {
+    //     axios.request({
+    //       url: new URL('/config/season.json', import.meta.url).href
+    //     }).then(res => {
+    //       this.seasons = res.data.child;
+    //       this.seasonValue = Object.entries(this.seasons).filter(i => i[0] == season)[0][1];
+
+    //       resolve();
+    //     });
+    //   });
+    // },
     async getSeasons() {
       const {season} = this.$route.query;
-
+      // console.log(season)
       return new Promise((resolve, reject) => {
         axios.request({
-          url: new URL('/config/season.json', import.meta.url).href
+          url: 'https://bfv-mmr-config-season.saranokiseki.workers.dev/'
         }).then(res => {
-          this.seasons = res.data.child;
+          this.season_response = res.data.data.season;
+          // this.server_response = res.data.data.servers;
+
+          this.seasons = this.season_response.child;
           this.seasonValue = Object.entries(this.seasons).filter(i => i[0] == season)[0][1];
 
           resolve();
@@ -89,10 +106,18 @@ export default new Application({
      */
     getSeasonDetail() {
       return new Promise((resolve, reject) => {
+        const {season} = this.$route.query;
+        const requestData = {
+          season: season,
+          filename: this.seasonValue.fileUrl[0]
+        };
         axios.request({
-          url: new URL('/' + this.seasonValue.fileUrl[0], import.meta.url).href
+          // url: new URL('/' + this.seasonValue.fileUrl[0], import.meta.url).href
+          method: 'POST',
+          url: 'https://bfv-mmr-detail-test.saranokiseki.workers.dev/',
+          data: requestData
         }).then(res => {
-          this.form.originalDesserts = this.parseDataFromText(res.data);
+          this.form.originalDesserts = this.parseDataFromText(res.data.data);
           this.form.desserts = this.form.originalDesserts;
 
           if (this.isLogin) {
@@ -107,10 +132,18 @@ export default new Application({
     },
     updateSeasonDetail() {
       return new Promise((resolve, reject) => {
+        const {season} = this.$route.query;
+        const requestData = {
+          season: season,
+          filename: this.seasonValue.fileUrl[this.index_selectedServer]
+        };
         axios.request({
-          url: new URL('/' + this.seasonValue.fileUrl[this.index_selectedServer], import.meta.url).href
+          // url: new URL('/' + this.seasonValue.fileUrl[this.index_selectedServer], import.meta.url).href
+          method: 'POST',
+          url: 'https://bfv-mmr-detail-test.saranokiseki.workers.dev/',
+          data: requestData
         }).then(res => {
-          this.form.originalDesserts = this.parseDataFromText(res.data);
+          this.form.originalDesserts = this.parseDataFromText(res.data.data);
           this.form.desserts = this.form.originalDesserts;
 
           if (this.isLogin) {
@@ -128,10 +161,18 @@ export default new Application({
      */
     getSeasonDailyDetail() {
       return new Promise((resolve, reject) => {
+        const {season} = this.$route.query;
+        const requestData = {
+          season: season,
+          filename: `${this.seasonValue.fileUrl[0]}-daily`
+        };
         axios.request({
-          url: new URL('/' + this.seasonValue.fileUrl[0].replace("list.txt", "dailylist.txt"), import.meta.url).href
+          // url: new URL('/' + this.seasonValue.fileUrl[0].replace("list.txt", "dailylist.txt"), import.meta.url).href
+          method: 'POST',
+          url: 'https://bfv-mmr-detail-test.saranokiseki.workers.dev/',
+          data: requestData
         }).then(res => {
-          this.form.originalDailyDesserts = this.parseDataFromText_daily(res.data);
+          this.form.originalDailyDesserts = this.parseDataFromText_daily(res.data.data);
           this.form.dailyDesserts = this.form.originalDailyDesserts;
 
           resolve();
@@ -140,10 +181,18 @@ export default new Application({
     },
     updateSeasonDailyDetail() {
       return new Promise((resolve, reject) => {
+        const {season} = this.$route.query;
+        const requestData = {
+          season: season,
+          filename: `${this.seasonValue.fileUrl[this.index_selectedServer]}-daily`
+        };
         axios.request({
-          url: new URL('/' + this.seasonValue.fileUrl[this.index_selectedServer].replace("list.txt", "dailylist.txt"), import.meta.url).href
+          // url: new URL('/' + this.seasonValue.fileUrl[this.index_selectedServer].replace("list.txt", "dailylist.txt"), import.meta.url).href
+          method: 'POST',
+          url: 'https://bfv-mmr-detail-test.saranokiseki.workers.dev/',
+          data: requestData
         }).then(res => {
-          this.form.originalDailyDesserts = this.parseDataFromText_daily(res.data);
+          this.form.originalDailyDesserts = this.parseDataFromText_daily(res.data.data);
           this.form.dailyDesserts = this.form.originalDailyDesserts;
 
           resolve();
@@ -153,13 +202,31 @@ export default new Application({
     /**
      * 服务器列表
      */
+    // getServers() {
+    //   return new Promise((resolve, reject) => {
+    //     axios.request({
+    //       url: new URL('/config/servers.json', import.meta.url).href
+    //     }).then(res => {
+    //       this.seasonValue.serverIds.map((i) => {
+    //         this.servers.push(res.data.child.filter(t => t.value == i)[0])
+    //       })
+
+    //       this.serversValue = this.servers[0];
+
+    //       resolve();
+    //     });
+    //   });
+    // },
     getServers() {
       return new Promise((resolve, reject) => {
         axios.request({
-          url: new URL('/config/servers.json', import.meta.url).href
+          url: 'https://bfv-mmr-config-season.saranokiseki.workers.dev/'
         }).then(res => {
+          // this.season_response = res.data.data.season;
+          this.server_response = res.data.data.servers;
+
           this.seasonValue.serverIds.map((i) => {
-            this.servers.push(res.data.child.filter(t => t.value == i)[0])
+            this.servers.push(this.server_response.child.filter(t => t.value == i)[0])
           })
 
           this.serversValue = this.servers[0];
@@ -174,6 +241,7 @@ export default new Application({
      */
     parseDataFromText(txtContent) {
       const lines = txtContent.trim().split('\n');
+      // const lines = txtContent.split('\r\n');
       const parsedData = [];
 
       const regex = /(\d+),([\w-]+),([\d.]+),\s*([-+]?[\d.]+),([\d.]+),([\d.]+),\s*([-+]?[\d.]+),\s*([-+]?[\d.]+)/;
@@ -313,7 +381,8 @@ export default new Application({
               </v-col>
               <v-divider vertical inset class="ml-2"></v-divider>
               <v-col>
-                更新时间: {{ seasonValue.updateTime }}
+                <!-- 更新时间: {{ seasonValue.updateTime }} -->
+                更新时间: {{ new Date(seasonValue.updateTime*1000).toLocaleTimeString() }}
               </v-col>
             </v-row>
           </v-card-text>

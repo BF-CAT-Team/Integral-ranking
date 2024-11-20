@@ -1,6 +1,6 @@
 <script lang="ts">
-import season from '/public/config/season.json'
-import server from '/public/config/servers.json'
+// import season from '/public/config/season.json'
+// import server from '/public/config/servers.json'
 import axios from "axios";
 
 import CheckPlayerName from './CheckPlayerName.vue'
@@ -8,14 +8,26 @@ import CheckPlayerName from './CheckPlayerName.vue'
 export default {
   data() {
     return {
-      servers: server,
-      seasons: season,
+      // servers: server,
+      // seasons: season,
+      servers: [],
+      seasons: [],
 
       players: []
     }
   },
   async created() {
-    await this.getSeasonDetail();
+    axios.request({
+      url: 'https://bfv-mmr-config-season.saranokiseki.workers.dev/'
+    }).then(res => {
+      console.log(res.data);
+      this.season_response = res.data.data.season;
+      this.server_response = res.data.data.servers;
+      this.servers = this.server_response;
+      this.seasons = this.season_response;
+
+      this.getSeasonDetail();
+    })
   },
   components: {CheckPlayerName},
   methods: {
@@ -24,10 +36,17 @@ export default {
      */
     getSeasonDetail() {
       return new Promise((resolve, reject) => {
+        const requestData = {
+          season: this.seasons.current,
+          filename: this.seasons.child[this.seasons.current].fileUrl
+        };
         axios.request({
-          url: new URL('/' + this.seasons.child[this.seasons.current].fileUrl, import.meta.url).href
+          // url: new URL('/' + this.seasons.child[this.seasons.current].fileUrl, import.meta.url).href
+          method: 'POST',
+          url: 'https://bfv-mmr-detail-test.saranokiseki.workers.dev/',
+          data: requestData
         }).then(res => {
-          this.players = this.parseDataFromText(res.data).slice(0, 3);
+          this.players = this.parseDataFromText(res.data.data).slice(0, 3);
           resolve();
         });
       });

@@ -1,6 +1,7 @@
 <script lang="ts">
-import season from '/public/config/season.json'
-import server from '/public/config/servers.json'
+import axios from "axios";
+// import season from '/public/config/season.json'
+// import server from '/public/config/servers.json'
 import Banner from "@/components/Banner.vue";
 
 export default {
@@ -9,17 +10,27 @@ export default {
     return {
       seasonsCount: 0,
       seasons: [],
-      servers: server,
+      // servers: server,
+      servers: [],
     }
   },
   created() {
-    const t = Object.entries(season.child);
-    this.seasonsCount = 1;
-    this.seasons = t.sort((a, b) => {
-      const start = new Date(a[1].dateRange[0]).getTime();
-      const end = new Date(a[1].dateRange[1]).getTime();
-      return start >= end ? 1 : -1
+    axios.request({
+      url: 'https://bfv-mmr-config-season.saranokiseki.workers.dev/'
+    }).then(res => {
+      this.season_response = res.data.data.season;
+      this.server_response = res.data.data.servers;
+
+      this.servers = this.server_response;
+      const t = Object.entries(this.season_response.child);
+      this.seasonsCount = 1;
+      this.seasons = t.sort((a, b) => {
+        const start = new Date(a[1].dateRange[0]).getTime();
+        const end = new Date(a[1].dateRange[1]).getTime();
+        return start >= end ? 1 : -1
+      });
     });
+    
   },
   methods: {}
 }

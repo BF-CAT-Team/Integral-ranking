@@ -42,7 +42,7 @@
                 </div>
               </v-timeline-item>
               <v-timeline-item
-                  v-for="(i, index) in Object.entries(seasons.child).slice( Object.entries(seasons.child).length - 2, Object.entries(seasons.child).length)"
+                  v-for="(i, index) in (seasons.child ? Object.entries(seasons.child).slice(Object.entries(seasons.child).length - 2) : [])"
                   fill-dot
                   :key="index"
                   :dot-color="index == 1 ? 'primary' : ''"
@@ -176,7 +176,7 @@
             <v-col md="12" sm="12" lg="8" order-md="2" order-sm="2" order-lg="1">
               <v-row>
                 <v-col
-                    v-for="(seasonItem, seasonItemIndex) in seasons.child[seasons.current].serverDatas"
+                    v-for="(seasonItem, seasonItemIndex) in seasons.child && seasons.child[seasons.current] && seasons.child[seasons.current].serverDatas || []"
                     :key="seasonItemIndex"
                     md="12" xs="12" lg="6">
                   <v-hover v-slot="{ isHovering, props }">
@@ -318,8 +318,9 @@
 </template>
 
 <script lang="ts">
-import season from '/public/config/season.json'
-import server from '/public/config/servers.json'
+import axios from "axios";
+// import season from '/public/config/season.json'
+// import server from '/public/config/servers.json'
 
 import Banner from '/src/components/Banner.vue'
 import ConspicuousRanking from "/src/components/ConspicuousRanking.vue"
@@ -329,8 +330,10 @@ export default new Application({
   components: {Banner, ConspicuousRanking},
   data() {
     return {
-      servers: server,
-      seasons: season,
+      // servers: server,
+      // seasons: season,
+      servers: [],
+      seasons: [],
 
       form: {
         tab: 'join',
@@ -351,22 +354,34 @@ export default new Application({
     }
   },
   created() {
-    const that = this;
-    const seasonsAsArray = Object.entries(this.seasons.child || {});
+    axios.request({
+      url: 'https://bfv-mmr-config-season.saranokiseki.workers.dev/'
+    }).then(res => {
+      console.log(res.data);
+      this.season_response = res.data.data.season;
+      this.server_response = res.data.data.servers;
+      console.log(this.season_response);
+      console.log(this.server_response);
+      this.servers = this.server_response;
+      this.seasons = this.season_response;
 
-    this.form.serverDatas = this.servers.child;
+      const that = this;
+      const seasonsAsArray = Object.entries(this.seasons.child || {});
 
-    // 赛季serverIds内服务器id，从server列表查询完整服务器信息，并赋在赛季map中
-    seasonsAsArray.map(i => {
-      let value = i[1];
-      value.serverDatas = value.serverIds.map(ids => {
-        let item = that.servers.child.filter(t => t.value == ids)[0];
-        item.picture = new URL(item.picture, import.meta.url).href
-        return item;
-      });
+      this.form.serverDatas = this.servers.child;
+
+      // 赛季serverIds内服务器id，从server列表查询完整服务器信息，并赋在赛季map中
+      seasonsAsArray.map(i => {
+        let value = i[1];
+        value.serverDatas = value.serverIds.map(ids => {
+          let item = that.servers.child.filter(t => t.value == ids)[0];
+          item.picture = new URL(item.picture, import.meta.url).href
+          return item;
+        });
+      })
+
+      this.onBoardingInterval();
     })
-
-    this.onBoardingInterval();
   },
   methods: {
     /**

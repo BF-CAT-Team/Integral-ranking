@@ -25,12 +25,20 @@ export default {
   },
   methods: {
     getAchievements() {
+      // axios.request({
+      //   url: new URL('/config/achievement.json', import.meta.url).href
+      // }).then(res => {
+      //   res.data.child.map(i => i.NumberType = i.Number[0].toUpperCase())
+      //   this.achievementsConfig = res.data.config;
+      //   this.originalAchievements = res.data.child;
+      //   this.showAchievements = this.originalAchievements;
+      // });
       axios.request({
-        url: new URL('/config/achievement.json', import.meta.url).href
+        url: 'https://bfv-mmr-config-achievements.saranokiseki.workers.dev/'
       }).then(res => {
-        res.data.child.map(i => i.NumberType = i.Number[0].toUpperCase())
-        this.achievementsConfig = res.data.config;
-        this.originalAchievements = res.data.child;
+        res.data.data.child.map(i => i.NumberType = i.Number[0].toUpperCase())
+        this.achievementsConfig = res.data.data.config;
+        this.originalAchievements = res.data.data.child;
         this.showAchievements = this.originalAchievements;
       });
     },
@@ -176,6 +184,8 @@ export default {
           <div v-if="showAchievements.length > 0" class="achievement-content">
             <v-card class="achievement-content-card mb-5" variant="elevated" v-for="(i, index) in showAchievements" :key="index">
               <div align="center" class="mt-5">
+                <!-- <v-avatar :color="achievementsConfig[i.NumberType].class || 'black'"
+                          size="large"> -->
                 <v-avatar :color="achievementsConfig[i.Rarity].class || 'black'"
                           size="large">
                   {{ i.Number }}
@@ -189,6 +199,7 @@ export default {
                 <p class="mt-5">{{ i.Describe }}</p>
               </v-card-text>
               <v-card-subtitle>
+                <!-- <consol class="log">{{achievementsConfig[i.Rarity].class}}</consol> -->
                 <v-chip :color="achievementsConfig[i.Rarity].class || 'black'">{{ i.Rarity }}</v-chip>
               </v-card-subtitle>
               <v-card-text>
