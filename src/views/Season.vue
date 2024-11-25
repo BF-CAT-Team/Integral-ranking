@@ -87,7 +87,7 @@ export default {
             {{ i[1].description }}
           </v-alert>
 
-          参与服务器: {{ i[1].serverIds.length || '0' }}
+          {{$t('season.serverparticipate')}}: {{ i[1].serverIds.length || '0' }}
           <div class="mb-5">
             <v-chip size="x-small"
                     v-for="(serverItem, serverIndex) in i[1].serverIds"
@@ -97,7 +97,7 @@ export default {
             </v-chip>
           </div>
 
-          <v-btn size="small" variant="outlined" color="primary" :to="{path: '/season/detail', query: {season: i[0]}}">详情</v-btn>
+          <v-btn size="small" variant="outlined" color="primary" :to="{path: '/season/detail', query: {season: i[0]}}">{{$t('season.detail')}}</v-btn>
           <div :class="[index == seasonsCount - 1 ? 'mt-10 mb-10' : '']"></div>
         </v-timeline-item>
       </v-timeline>

@@ -136,7 +136,18 @@ export default new Application({
 
     <div class="content mt-5 mb-5">
       <v-data-table
-          :headers="my.headers"
+          :headers="[
+            {
+              title: $t('my.playerName'),
+              align: 'start',
+              sortable: false,
+              fixed: true,
+              key: 'username',
+            },
+            {title: $t('my.createTime'), key: 'creationTime'},
+            {title: $t('my.updateTime'), key: 'updateTime'},
+            {key: 'actions', align: 'end', sortable: false},
+          ]"
           :items="my.desserts"
           class="elevation-1">
         <template v-slot:top>
@@ -152,7 +163,8 @@ export default new Application({
               </template>
               <v-card>
                 <v-card-title>
-                  <span class="text-h5">{{ formTitle }}</span>
+                  <!-- <span class="text-h5">{{ formTitle }}</span> -->
+                  <span class="text-h5">{{ this.editedIndex === -1 ? $t('my.add') : $t('my.modify') }}</span>
                 </v-card-title>
                 <v-container>
                   <v-row>
@@ -198,7 +210,7 @@ export default new Application({
             <!-- Delete -->
             <v-dialog v-model="dialogDelete" max-width="500px">
               <v-card>
-                <v-card-title class="text-h5">删除此用户</v-card-title>
+                <v-card-title class="text-h5">{{ $t('my.delete') }}</v-card-title>
                 <v-divider></v-divider>
                 <v-card-actions>
                   <v-spacer></v-spacer>

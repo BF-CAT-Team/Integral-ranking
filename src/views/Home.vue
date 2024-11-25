@@ -106,8 +106,8 @@
                 </v-window-item>
                 <v-window-item value="2">
                   <v-card v-if="allUser.length > 0">
-                    <v-card-title>当前关注用户名称</v-card-title>
-                    <v-card-subtitle class="mb-2">优先展示你的数据</v-card-subtitle>
+                    <v-card-title>{{ $t('home.currentTaggedUser') }}</v-card-title>
+                    <v-card-subtitle class="mb-2">{{ $t('home.currentTaggedUser_2') }}</v-card-subtitle>
                     <v-divider></v-divider>
                     <v-card-text>
                       <v-row align="start" justify="start">
@@ -122,17 +122,17 @@
                     <v-divider></v-divider>
                     <v-card-actions>
                       <v-btn block variant="text" :to="{path: '/my'}">
-                        设置
+                        {{ $t('home.setting') }}
                       </v-btn>
                     </v-card-actions>
                   </v-card>
                   <v-card v-else>
-                    <v-card-title>用户展示牌</v-card-title>
-                    <v-card-text>试试将”你“添加到这里，系统优先展示你排行，不需要再次查找</v-card-text>
+                    <v-card-title>{{$t('home.userTag')}}</v-card-title>
+                    <v-card-text>{{$t('home.userTagExplanation')}}</v-card-text>
                     <v-divider></v-divider>
                     <v-card-actions>
                       <v-spacer></v-spacer>
-                      <v-btn :to="{path:'/my'}">好</v-btn>
+                      <v-btn :to="{path:'/my'}">OK</v-btn>
                     </v-card-actions>
                   </v-card>
                 </v-window-item>
@@ -161,8 +161,8 @@
 
     <v-divider class="mt-5"></v-divider>
     <v-tabs class="content" v-model="form.tab">
-      <v-tab value="join">服务器</v-tab>
-      <v-tab value="all">筛选</v-tab>
+      <v-tab value="join">{{$t('home.server')}}</v-tab>
+      <v-tab value="all">{{$t('home.filter')}}</v-tab>
       <v-spacer></v-spacer>
     </v-tabs>
     <v-divider class="mb-0"></v-divider>
@@ -170,8 +170,8 @@
     <v-container>
       <v-window v-model="form.tab" class="content mt-5 mb-5 pa-1">
         <v-window-item value="join">
-          <h3 class="text-h5">参加服务器</h3>
-          <p class="mb-5 text-subtitle-1">当前赛季参与服务器列表</p>
+          <h3 class="text-h5">{{$t('home.participatedServer')}}</h3>
+          <p class="mb-5 text-subtitle-1">{{$t('home.participatedServerExplanation')}}</p>
           <v-row>
             <v-col md="12" sm="12" lg="8" order-md="2" order-sm="2" order-lg="1">
               <v-row>
@@ -199,7 +199,7 @@
                             scrim="primary"
                             class="align-center justify-center">
                           <v-card-actions>
-                            <v-btn variant="flat" :to="{path:'season/detail', query:{season: seasons.current}}">赛季详情
+                            <v-btn variant="flat" :to="{path:'season/detail', query:{season: seasons.current}}">{{ $t('home.seasonDetail') }}
                             </v-btn>
                           </v-card-actions>
                         </v-overlay>
@@ -234,8 +234,8 @@
                   class="mb-2"
                   variant="elevated"
                   type="info">
-                <template v-slot:title>如何加入</template>
-                <p>参与社区活动赛季，你需要加入下方任意服务器列表，游玩满5分钟，积分将在战局结束后更新</p>
+                <template v-slot:title>{{$t('home.howtojoin')}}</template>
+                <p>{{$t('home.howtojoin_step')}}</p>
               </v-alert>
 
               <!--              <v-card>-->
@@ -265,7 +265,7 @@
           </v-row>
         </v-window-item>
         <v-window-item value="all">
-          <h3 class="text-h5 mb-5">服务器</h3>
+          <h3 class="text-h5 mb-5">{{$t('home.server')}}</h3>
           <v-text-field label="查找" v-model="form.searchServerValue" variant="solo"
                         clearable
                         @click:clear="querySearchServer"

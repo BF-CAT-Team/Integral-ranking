@@ -110,7 +110,7 @@ export default {
     <v-divider class="mt-3"></v-divider>
     <v-card-actions>
       <v-btn block variant="text" :to="{path: 'season/detail', query: {season: seasons.current}}">
-        前往当前赛季排行
+        {{$t('home.gotoCurrentSeason')}}
       </v-btn>
     </v-card-actions>
   </v-card>

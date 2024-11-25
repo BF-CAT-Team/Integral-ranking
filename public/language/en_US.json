@@ -1,6 +1,29 @@
 {
+  "header": {
+    "title": "MMR"
+  },
+  "footer": {
+    "about": "About",
+    "aboutDescription": "BFV-MMR(testing)",
+    "community": "Community",
+    "links": "Friendly Links",
+    "language": "语言/Language"
+  },
   "home": {
-    "title": "Home"
+    "title": "Home",
+    "setting": "Setting",
+    "gotoCurrentSeason": "Current season ranking",
+    "userTag": "User Tag",
+    "userTagExplanation": "Add tag to your favorate players, no need to search again",
+    "currentTaggedUser": "Current tagged player",
+    "currentTaggedUser_2": "Tagged player will be shown first",
+    "server": "Server",
+    "filter": "Filter",
+    "participatedServer": "Participated Server",
+    "participatedServerExplanation": "Servers that participated in the current season",
+    "seasonDetail": "Season Detail",
+    "howtojoin": "How to join",
+    "howtojoin_step": "Join the participated server listed, play a game longer than 5 min, your score will be updated after the game ends<"
   },
   "achievements": {
     "title": "Achievement",
@@ -10,13 +33,42 @@
     }
   },
   "seasonDetail": {
-    "title": "Season Detail"
+    "title": "Season Detail",
+    "mydata": "My data",
+    "mydataexplaination": "list favorated player data",
+    "rank": "Rank",
+    "me": "Me",
+    "overallrank": "Overall Rank",
+    "darkhorse": "Dark Horse",
+    "updatetime": "Update Time",
+    "searchplayer": "Search Player",
+    "server": "Server",
+    "dateRange": "Season Start/End"
   },
   "season": {
-    "title": "\uD83D\uDCC5 Season"
+    "title": "\uD83D\uDCC5 Season",
+    "detail": "Detail",
+    "serverparticipate": "Server participated"
+  },
+  "table": {
+    "rank": "Rank",
+    "player": "Player",
+    "score": "score",
+    "float24h": "24H change",
+    "kpm": "kpm",
+    "seasonTime": "season time",
+    "kill": "kill",
+    "revive": "revive",
+    "status": "status"
   },
   "my": {
-    "title": "Me"
+    "title": "Me",
+    "playerName": "Name",
+    "createTime": "Created time",
+    "updateTime": "Updated time",
+    "add": "Add new name",
+    "modify": "Modify existing",
+    "delete": "Delete this name?"
   },
   "helps": {
     "title": "Help"

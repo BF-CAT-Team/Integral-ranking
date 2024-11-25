@@ -27,7 +27,7 @@ export default new Application({
       // 排行数据
       form: {
         page: 1,
-        itemsPerPage: 100,
+        itemsPerPage: 20,
         itemsPerPages: [10, 20, 50, 100, 200, 300, 400, 1000],
         loading: false,
         textValue: '',
@@ -367,7 +367,7 @@ export default new Application({
           <v-card-text>
             <v-row justify="space-evenly" align="center">
               <v-col v-if="seasonValue.dateRange">
-                赛季区间:
+                {{$t('seasonDetail.dateRange')}}:
                 <v-chip size="x-small"
                         text-color="white">
                   {{ seasonValue.dateRange[0] || '-' }}
@@ -382,7 +382,7 @@ export default new Application({
               <v-divider vertical inset class="ml-2"></v-divider>
               <v-col>
                 <!-- 更新时间: {{ seasonValue.updateTime }} -->
-                更新时间: {{ new Date(seasonValue.updateTime*1000).toLocaleTimeString() }}
+                {{$t('seasonDetail.updatetime')}}: {{ new Date(seasonValue.updateTime*1000).toLocaleTimeString() }}
               </v-col>
             </v-row>
           </v-card-text>
@@ -391,7 +391,7 @@ export default new Application({
           <v-col xs="9" sm="9" md="5" lg="5">
             <v-select 
                 v-model="serversValue"
-                label="服务器"
+                :label="$t('seasonDetail.server')"
                 density="compact"
                 variant="solo"
                 item-title="name"
@@ -419,7 +419,7 @@ export default new Application({
                 v-model="textValue"
                 density="compact"
                 variant="solo"
-                label="搜索玩家名称"
+                :label="$t('seasonDetail.searchplayer')"
                 prepend-inner-icon="mdi-magnify"
                 clearable
                 single-line
@@ -438,10 +438,10 @@ export default new Application({
           centered
           @update:modelValue="onTabs">
         <v-tab value="1">
-          综合排行
+          {{$t('seasonDetail.overallrank')}}
         </v-tab>
         <v-tab value="2">
-          每日黑马
+          {{$t('seasonDetail.darkhorse')}}
         </v-tab>
       </v-tabs>
       <v-divider></v-divider>
@@ -452,13 +452,23 @@ export default new Application({
         <v-window-item value="1">
           <!-- 置顶 我排名 -->
           <v-card variant="elevated" class="mt-10 mb-5 ma-1" v-if="isLogin">
-            <v-card-title>我的数据</v-card-title>
-            <v-card-subtitle>列出关注玩家数据</v-card-subtitle>
+            <v-card-title>{{$t('seasonDetail.mydata')}}</v-card-title>
+            <v-card-subtitle>{{$t('seasonDetail.mydataexplaination')}}</v-card-subtitle>
             <v-divider thickness="10" class="mt-2 mb-2"></v-divider>
             <v-data-table
                 fixed-header
                 :page="1"
-                :headers="form.headers"
+                :headers="[
+                  { title: $t('table.rank'), align: 'start', key: 'rank' },
+                  { title: $t('table.player'), key: 'player', sortable: false, fixed: true },
+                  { title: $t('table.score'), key: 'score' },
+                  { title: $t('table.float24h'), key: 'float' },
+                  { title: $t('table.kpm'), key: 'kpm' },
+                  { title: $t('table.seasonTime'), key: 'time' },
+                  { title: $t('table.kill'), key: 'kill' },
+                  { title: $t('table.revive'), key: 'revive' },
+                  { title: $t('table.status'), key: 'status' },
+                ]"
                 :items="form.myDesserts"
                 item-value="name">
               <template v-slot:item="{ item }">
@@ -514,14 +524,24 @@ export default new Application({
           <!-- 综合列表 -->
           <v-card>
             <v-card-title>
-              排行
+              {{$t('seasonDetail.rank')}}
             </v-card-title>
             <template v-if="!form.loading">
               <v-data-table
                   fixed-header
                   v-model:page="form.page"
                   :items-per-page="form.itemsPerPage"
-                  :headers="form.headers"
+                  :headers="[
+                    { title: $t('table.rank'), align: 'start', key: 'rank' },
+                    { title: $t('table.player'), key: 'player', sortable: false, fixed: true },
+                    { title: $t('table.score'), key: 'score' },
+                    { title: $t('table.float24h'), key: 'float' },
+                    { title: $t('table.kpm'), key: 'kpm' },
+                    { title: $t('table.seasonTime'), key: 'time' },
+                    { title: $t('table.kill'), key: 'kill' },
+                    { title: $t('table.revive'), key: 'revive' },
+                    { title: $t('table.status'), key: 'status' },
+                  ]"
                   :items="form.desserts"
                   item-value="name">
                 <template v-slot:item="{ item }">

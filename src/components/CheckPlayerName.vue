@@ -20,7 +20,7 @@ export default new Application({
   <div>
     <template v-if="hasUserName">
       <v-chip class="mr-1">{{ username }}</v-chip>
-      <v-chip color="red" class="hidden-sm-and-down">我</v-chip>
+      <v-chip color="red" class="hidden-sm-and-down">{{$t('seasonDetail.me')}}</v-chip>
     </template>
     <template v-else>
       {{ username }}
